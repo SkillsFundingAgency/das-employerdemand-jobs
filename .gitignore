@@ -267,4 +267,4 @@ src/ReleaseTemplate.sql
 desktop.ini
 App.Debug.config
 
-src/SFA.DAS.FAT.Jobs/local.settings.Development.json
+src/SFA.DAS.EmployerDemand.Jobs/local.settings.Development.json
