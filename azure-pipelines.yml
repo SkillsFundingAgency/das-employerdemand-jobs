@@ -7,17 +7,8 @@ trigger:
 variables:
   - name: SolutionBaseName
     value: SFA.DAS.EmployerDemand.Jobs
-  - name: BuildConfiguration
-    value: release
-  - name: BuildPlatform
-    value: any cpu
   - group: RELEASE Management Resources
   - group: RELEASE das-employerdemand-jobs
-
-pool:
-  name: DAS - Continuous Integration
-  workspace:
-    clean: all
 
 resources:
   repositories:
