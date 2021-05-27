@@ -67,12 +67,6 @@
             "type": "string",
             "defaultValue": "~3"
         },
-        "nServiceBusConnectionString": {
-            "type": "securestring"
-        },
-        "nServiceBusLicense": {
-            "type": "securestring"
-        },
         "sharedServiceBusName": {
             "type": "string"
         },
