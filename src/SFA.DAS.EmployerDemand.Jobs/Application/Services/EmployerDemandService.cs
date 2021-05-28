@@ -33,7 +33,7 @@ namespace SFA.DAS.EmployerDemand.Jobs.Application.Services
         {
             var request = new PostSendReminderEmailRequest(Guid.NewGuid(), shortListId);
 
-            await _apiClient.Post<Guid>(request);
+            await _apiClient.Post<PostSendReminderEmailResponse>(request);
         }
     }
 }

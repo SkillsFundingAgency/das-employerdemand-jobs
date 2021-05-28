@@ -6,6 +6,7 @@ using NUnit.Framework;
 using SFA.DAS.EmployerDemand.Jobs.Application.Services;
 using SFA.DAS.EmployerDemand.Jobs.Domain.Interfaces;
 using SFA.DAS.EmployerDemand.Jobs.Infrastructure.Api.Requests;
+using SFA.DAS.EmployerDemand.Jobs.Infrastructure.Api.Responses;
 using SFA.DAS.Testing.AutoFixture;
 
 namespace SFA.DAS.EmployerDemand.Jobs.UnitTests.Application.Services
@@ -23,7 +24,7 @@ namespace SFA.DAS.EmployerDemand.Jobs.UnitTests.Application.Services
             
             //Assert
             apiClient.Verify(
-                x => x.Post<Guid>(It.Is<PostSendReminderEmailRequest>(c => c.PostUrl.Contains(id.ToString()))),
+                x => x.Post<PostSendReminderEmailResponse>(It.Is<PostSendReminderEmailRequest>(c => c.PostUrl.Contains(id.ToString()))),
                 Times.Once);
         }
     }
