@@ -6,7 +6,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using SFA.DAS.Configuration.AzureTableStorage;
 using SFA.DAS.EmployerDemand.Jobs;
+using SFA.DAS.EmployerDemand.Jobs.Application.Services;
 using SFA.DAS.EmployerDemand.Jobs.Domain.Configuration;
+using SFA.DAS.EmployerDemand.Jobs.Domain.Interfaces;
+using SFA.DAS.EmployerDemand.Jobs.Infrastructure.Api;
 
 [assembly: FunctionsStartup(typeof(Startup))]
 
@@ -51,7 +54,8 @@ namespace SFA.DAS.EmployerDemand.Jobs
 
             builder.Services.AddSingleton(new FunctionEnvironment(configuration["EnvironmentName"]));
 
-            //builder.Services.AddHttpClient<IApiClient, ApiClient>();
+            builder.Services.AddHttpClient<IApiClient, ApiClient>();
+            builder.Services.AddTransient<IEmployerDemandService, EmployerDemandService>();
             
             builder.Services.BuildServiceProvider();
         }
