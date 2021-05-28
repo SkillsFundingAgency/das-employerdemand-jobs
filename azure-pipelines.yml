@@ -20,12 +20,12 @@ resources:
   - repository: das-platform-building-blocks
     type: github
     name: SkillsFundingAgency/das-platform-building-blocks
-    ref: refs/heads/master
+    ref: refs/heads/DASD-8628-apim-key-step-template #refs/heads/master
     endpoint: GitHub (SFA)
   - repository: das-platform-automation
     type: github
     name: SkillsFundingAgency/das-platform-automation
-    ref: refs/tags/4.3.5
+    ref: refs/heads/master #refs/tags/4.3.5
     endpoint: GitHub (SFA)
   pipelines:
   - pipeline: das-employer-config
