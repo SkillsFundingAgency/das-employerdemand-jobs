@@ -83,8 +83,8 @@ stages:
   dependsOn: Build
   displayName: Deploy to PP
   variables:
-  - group: DevTest Management Resources
-  - group: PP DevTest Shared Resources
+  - group: PreProd Management Resources
+  - group: PreProd Shared Resources
   - group: PP das-employerdemand-jobs
   jobs:
   - template: pipeline-templates/job/deploy.yml
