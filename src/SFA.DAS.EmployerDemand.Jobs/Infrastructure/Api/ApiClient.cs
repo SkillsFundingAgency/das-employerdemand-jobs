@@ -1,7 +1,6 @@
 using System;
 using System.Net;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
@@ -10,7 +9,7 @@ using SFA.DAS.EmployerDemand.Jobs.Domain.Interfaces;
 
 namespace SFA.DAS.EmployerDemand.Jobs.Infrastructure.Api
 {
-    public class ApiClient
+    public class ApiClient : IApiClient
     {
         private readonly EmployerDemandJobsApiConfiguration _config;
         private readonly HttpClient _client;
