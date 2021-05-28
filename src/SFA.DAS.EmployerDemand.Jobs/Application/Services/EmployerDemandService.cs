@@ -29,9 +29,11 @@ namespace SFA.DAS.EmployerDemand.Jobs.Application.Services
             return demandIds;
         }
 
-        public Task SendReminderEmail(Guid shortListId)
+        public async Task SendReminderEmail(Guid shortListId)
         {
-            throw new NotImplementedException();
+            var request = new PostSendReminderEmailRequest(Guid.NewGuid(), shortListId);
+
+            await _apiClient.Post<Guid>(request);
         }
     }
 }
