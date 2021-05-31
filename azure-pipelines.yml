@@ -20,12 +20,12 @@ resources:
   - repository: das-platform-building-blocks
     type: github
     name: SkillsFundingAgency/das-platform-building-blocks
-    ref: refs/heads/master
+    ref: refs/heads/DASD-8628-apim-key-step-template #refs/heads/master
     endpoint: GitHub (SFA)
   - repository: das-platform-automation
     type: github
     name: SkillsFundingAgency/das-platform-automation
-    ref: refs/tags/4.3.5
+    ref: refs/heads/master #refs/tags/4.3.5
     endpoint: GitHub (SFA)
   pipelines:
   - pipeline: das-employer-config
@@ -52,3 +52,42 @@ stages:
     parameters:
       Environment: AT
       ServiceConnection: SFA-DAS-DevTest-ARM
+
+- stage: Deploy_TEST
+  dependsOn: Build
+  displayName: Deploy to TEST
+  variables:
+  - group: DevTest Management Resources
+  - group: TEST DevTest Shared Resources
+  - group: TEST das-employerdemand-jobs
+  jobs:
+  - template: pipeline-templates/job/deploy.yml
+    parameters:
+      Environment: TEST
+      ServiceConnection: SFA-DAS-DevTest-ARM
+
+- stage: Deploy_TEST2
+  dependsOn: Build
+  displayName: Deploy to TEST2
+  variables:
+  - group: DevTest Management Resources
+  - group: TEST2 DevTest Shared Resources
+  - group: TEST2 das-employerdemand-jobs
+  jobs:
+  - template: pipeline-templates/job/deploy.yml
+    parameters:
+      Environment: TEST2
+      ServiceConnection: SFA-DAS-DevTest-ARM
+
+- stage: Deploy_PP
+  dependsOn: Build
+  displayName: Deploy to PP
+  variables:
+  - group: PreProd Management Resources
+  - group: PreProd Shared Resources
+  - group: PP das-employerdemand-jobs
+  jobs:
+  - template: pipeline-templates/job/deploy.yml
+    parameters:
+      Environment: PP
+      ServiceConnection: SFA-DIG-PreProd-ARM
