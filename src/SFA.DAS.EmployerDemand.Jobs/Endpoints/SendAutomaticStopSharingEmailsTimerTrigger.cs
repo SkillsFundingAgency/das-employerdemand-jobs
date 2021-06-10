@@ -7,27 +7,27 @@ using SFA.DAS.EmployerDemand.Jobs.Domain.Interfaces;
 
 namespace SFA.DAS.EmployerDemand.Jobs.Endpoints
 {
-    public class SendReminderEmailsTimerTrigger
+    public class SendAutomaticStopSharingEmailsTimerTrigger
     {
         private readonly IEmployerDemandService _employerDemandService;
 
-        public SendReminderEmailsTimerTrigger (IEmployerDemandService employerDemandService)
+        public SendAutomaticStopSharingEmailsTimerTrigger (IEmployerDemandService employerDemandService)
         {
             _employerDemandService = employerDemandService;
         }
         
-        [FunctionName("SendReminderEmailsTimerTrigger")]
+        [FunctionName("SendAutomaticStopSharingEmailsTimerTrigger")]
         public async Task RunAsync(
             [TimerTrigger("0 0 9 * * *")] TimerInfo myTimer, 
             ILogger log)
         {
-            log.LogInformation($"Get employer demand reminder emails timer trigger function executed at: {DateTime.UtcNow}");
+            log.LogInformation($"Get employer demands to automatically stop sharing details timer trigger function executed at: {DateTime.UtcNow}");
 
-            var courseDemandIds = (await _employerDemandService.GetUnmetDemands()).ToList();
+            var courseDemandIds = (await _employerDemandService.GetDemandsToAutomaticallyStop()).ToList();
 
             foreach (var courseDemandId in courseDemandIds)
             {
-                await _employerDemandService.SendReminderEmail(courseDemandId);
+                await _employerDemandService.SendAutomaticStopSharingEmail(courseDemandId);
             }
         }
         
