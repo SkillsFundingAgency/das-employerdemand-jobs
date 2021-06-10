@@ -28,6 +28,12 @@ namespace SFA.DAS.EmployerDemand.Jobs.Application.Services
             
             return demandIds;
         }
+        
+        public async Task<IEnumerable<Guid>> GetDemandsToAutomaticallyStop()
+        {
+            var result = await _apiClient.Get<GetUnmetDemandResponse>(new GetUnmetDemandRequest(84));
+            return result.EmployerDemandIds;
+        }
 
         public async Task SendReminderEmail(Guid shortListId)
         {
@@ -35,5 +41,6 @@ namespace SFA.DAS.EmployerDemand.Jobs.Application.Services
 
             await _apiClient.Post<PostSendReminderEmailResponse>(request);
         }
+
     }
 }
