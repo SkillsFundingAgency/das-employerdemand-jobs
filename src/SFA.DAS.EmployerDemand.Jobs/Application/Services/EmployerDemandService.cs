@@ -35,12 +35,18 @@ namespace SFA.DAS.EmployerDemand.Jobs.Application.Services
             return result.EmployerDemandIds;
         }
 
-        public async Task SendReminderEmail(Guid shortListId)
+        public async Task SendReminderEmail(Guid courseDemandId)
         {
-            var request = new PostSendReminderEmailRequest(Guid.NewGuid(), shortListId);
+            var request = new PostSendReminderEmailRequest(Guid.NewGuid(), courseDemandId);
 
-            await _apiClient.Post<PostSendReminderEmailResponse>(request);
+            await _apiClient.Post<PostSendEmailResponse>(request);
         }
 
+        public async Task SendAutomaticStopSharingEmail(Guid courseDemandId)
+        {
+            var request = new PostSendAutomaticStopSharedDemandRequest(Guid.NewGuid(), courseDemandId);
+
+            await _apiClient.Post<PostSendEmailResponse>(request);
+        }
     }
 }
