@@ -48,5 +48,11 @@ namespace SFA.DAS.EmployerDemand.Jobs.Application.Services
 
             await _apiClient.Post<PostSendEmailResponse>(request);
         }
+
+        public async Task<IEnumerable<Guid>> GetDemandsWithExpiredCourses()
+        {
+            var result = await _apiClient.Get<GetUnmetDemandResponse>(new GetUnmetExpiredCourseDemandRequest());
+            return result.EmployerDemandIds;
+        }
     }
 }

@@ -10,5 +10,6 @@ namespace SFA.DAS.EmployerDemand.Jobs.Domain.Interfaces
         Task SendReminderEmail(Guid courseDemandId);
         Task<IEnumerable<Guid>> GetDemandsToAutomaticallyStop();
         Task SendAutomaticStopSharingEmail(Guid courseDemandId);
+        Task<IEnumerable<Guid>> GetDemandsWithExpiredCourses();
     }
 }
