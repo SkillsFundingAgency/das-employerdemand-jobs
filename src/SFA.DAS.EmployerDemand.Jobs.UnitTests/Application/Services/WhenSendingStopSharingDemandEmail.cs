@@ -11,20 +11,20 @@ using SFA.DAS.Testing.AutoFixture;
 
 namespace SFA.DAS.EmployerDemand.Jobs.UnitTests.Application.Services
 {
-    public class WhenSendingEmailReminder
+    public class WhenSendingStopSharingDemandEmail
     {
         [Test, MoqAutoData]
-        public async Task Then_The_Api_Is_Called_To_Send_Email_Reminder(
+        public async Task Then_The_Api_Is_Called_And_Email_Sent(
             Guid id,
             [Frozen] Mock<IApiClient> apiClient,
             EmployerDemandService service)
         {
             //Act
-            await service.SendReminderEmail(id);
+            await service.SendAutomaticStopSharingEmail(id);
             
             //Assert
             apiClient.Verify(
-                x => x.Post<PostSendEmailResponse>(It.Is<PostSendReminderEmailRequest>(c => c.PostUrl.Contains(id.ToString()))),
+                x => x.Post<PostSendEmailResponse>(It.Is<PostSendAutomaticStopSharedDemandRequest>(c => c.PostUrl.Contains(id.ToString()))),
                 Times.Once);
         }
     }

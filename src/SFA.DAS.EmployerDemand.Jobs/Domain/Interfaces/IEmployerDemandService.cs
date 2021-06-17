@@ -7,6 +7,8 @@ namespace SFA.DAS.EmployerDemand.Jobs.Domain.Interfaces
     public interface IEmployerDemandService
     {
         Task<IEnumerable<Guid>> GetUnmetDemands();
-        Task SendReminderEmail(Guid shortListId);
+        Task SendReminderEmail(Guid courseDemandId);
+        Task<IEnumerable<Guid>> GetDemandsToAutomaticallyStop();
+        Task SendAutomaticStopSharingEmail(Guid courseDemandId);
     }
 }
