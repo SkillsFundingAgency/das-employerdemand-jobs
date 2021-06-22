@@ -4,11 +4,10 @@
 
 <img src="https://avatars.githubusercontent.com/u/9841374?s=200&v=4" align="right" alt="UK Government logo">
 
-
-[![Build Status](https://dev.azure.com/sfa-gov-uk/Digital%20Apprenticeship%20Service/_apis/build/status/das-employerdemand-jobs?branchName=main)](https://dev.azure.com/sfa-gov-uk/Digital%20Apprenticeship%20Service/_build/latest?definitionId=_projectid_&branchName=main)
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=_projectId_&metric=alert_status)](https://sonarcloud.io/dashboard?id=_projectId_)
-[![Jira Project](https://img.shields.io/badge/Jira-Project-blue)](https://skillsfundingagency.atlassian.net/secure/RapidBoard.jspa?rapidView=564&projectKey=_projectKey_)
-[![Confluence Project](https://img.shields.io/badge/Confluence-Project-blue)](https://skillsfundingagency.atlassian.net/wiki/spaces/_pageurl_)
+[![Build Status](https://dev.azure.com/sfa-gov-uk/Digital%20Apprenticeship%20Service/_apis/build/status/das-employerdemand-jobs?branchName=main)](https://dev.azure.com/sfa-gov-uk/Digital%20Apprenticeship%20Service/_build/latest?definitionId=2432&branchName=main)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=SkillsFundingAgency_das-employerdemand-jobs&metric=alert_status)](https://sonarcloud.io/dashboard?id=SkillsFundingAgency_das-employerdemand-jobs)
+[![Jira Project](https://img.shields.io/badge/Jira-Project-blue)](https://skillsfundingagency.atlassian.net/secure/RapidBoard.jspa?rapidView=664)
+[![Confluence Project](https://img.shields.io/badge/Confluence-Project-blue)](https://skillsfundingagency.atlassian.net/wiki/spaces/NDL/pages/2393178481/AED)
 [![License](https://img.shields.io/badge/license-MIT-lightgrey.svg?longCache=true&style=flat-square)](https://en.wikipedia.org/wiki/MIT_License)
 
 Employer Demand Jobs is an Azure Function responsible for executing any scheduled or automated tasks necessary for normal operation of the Employer Demand system. This currently includes: 
@@ -19,6 +18,7 @@ Employer Demand Jobs is an Azure Function responsible for executing any schedule
 ## How It Works
 
 Employer Demand Jobs calls the employer demand outer api, [das-apim-endpoints](https://github.com/skillsfundingagency/das-apim-endpoints), for all of its operations. The Azure Functions use time based triggers to start its operations.
+
 
 ## 🚀 Installation
 
@@ -35,13 +35,13 @@ Headers Content-Type application/json
 body :{}
 ```
 
+
 ### Config
 
 This utility uses the standard Apprenticeship Service configuration. All configuration can be found in the [das-employer-config repository](https://github.com/SkillsFundingAgency/das-employer-config).
 
 * Add an appsettings.Development.json file
 * Add table storage config
-
 
 AppSettings.Development.json file
 ```json
@@ -63,9 +63,9 @@ AppSettings.Development.json file
 
 Azure Table Storage config
 
-Row Key: SFA.DAS.EmployerDemand.Jobs_1.0
+Row Key: `SFA.DAS.EmployerDemand.Jobs_1.0`
 
-Partition Key: LOCAL
+Partition Key: `LOCAL`
 
 Data:
 
@@ -77,6 +77,7 @@ Data:
   }
 }
 ```
+
 
 ## 🔗 External Dependencies
 
