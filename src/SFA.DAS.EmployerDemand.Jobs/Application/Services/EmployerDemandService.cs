@@ -61,5 +61,15 @@ namespace SFA.DAS.EmployerDemand.Jobs.Application.Services
 
             await _apiClient.Post<PostSendEmailResponse>(request);
         }
+
+        public async Task<IEnumerable<Guid>> GetDemandsOlderThan3Years()
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task AnonymiseDemand(Guid courseDemandId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
