@@ -13,6 +13,7 @@
 Employer Demand Jobs is an Azure Function responsible for executing any scheduled or automated tasks necessary for normal operation of the Employer Demand system. This currently includes: 
 * reminder emails
 * expiration of employer demands
+* closing an unmet demand if a course closes
 
 
 ## How It Works
@@ -40,25 +41,21 @@ body :{}
 
 This utility uses the standard Apprenticeship Service configuration. All configuration can be found in the [das-employer-config repository](https://github.com/SkillsFundingAgency/das-employer-config).
 
-* Add an appsettings.Development.json file
+* Add an local.settings.json file
 * Add table storage config
 
-AppSettings.Development.json file
+local.settings.json file
 ```json
 {
-    "Logging": {
-      "LogLevel": {
-        "Default": "Information",
-        "Microsoft": "Warning",
-        "Microsoft.Hosting.Lifetime": "Information"
-      }
-    },
-    "ConfigurationStorageConnectionString": "UseDevelopmentStorage=true;",
-    "ConfigNames": "SFA.DAS.EmployerDemand.Jobs",
-    "EnvironmentName": "LOCAL",
-    "Version": "1.0",
-    "APPINSIGHTS_INSTRUMENTATIONKEY": ""
-  }  
+    "IsEncrypted": false,
+    "Values": {
+        "AzureWebJobsStorage": "UseDevelopmentStorage=true;",
+        "FUNCTIONS_WORKER_RUNTIME": "dotnet",
+        "ConfigurationStorageConnectionString": "UseDevelopmentStorage=true;",
+        "ConfigNames": "SFA.DAS.EmployerDemand.Jobs",
+        "EnvironmentName": "LOCAL"
+    }
+}
 ```
 
 Azure Table Storage config
