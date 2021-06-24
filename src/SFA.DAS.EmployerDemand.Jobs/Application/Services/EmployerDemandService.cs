@@ -64,12 +64,15 @@ namespace SFA.DAS.EmployerDemand.Jobs.Application.Services
 
         public async Task<IEnumerable<Guid>> GetDemandsOlderThan3Years()
         {
-            throw new NotImplementedException();
+            var result = await _apiClient.Get<GetDemandsOlderThan3YearsResponse>(new GetDemandsOlderThan3YearsRequest());
+
+            return result.EmployerDemandIds;
         }
 
         public async Task AnonymiseDemand(Guid courseDemandId)
         {
-            throw new NotImplementedException();
+            var request = new PostAnonymiseDemandRequest(courseDemandId);
+            await _apiClient.Post<PostAnonymiseDemandResponse>(request);
         }
     }
 }
