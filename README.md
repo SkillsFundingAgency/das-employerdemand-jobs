@@ -14,6 +14,7 @@ Employer Demand Jobs is an Azure Function responsible for executing any schedule
 * reminder emails
 * expiration of employer demands
 * closing an unmet demand if a course closes
+* anonymising demands once 3 years old
 
 
 ## How It Works
