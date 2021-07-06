@@ -17,8 +17,6 @@ namespace SFA.DAS.EmployerDemand.Jobs
 {
     public class Startup : FunctionsStartup
     {
-        private IConfiguration _configuration;
-
         public override void Configure(IFunctionsHostBuilder builder)
         {
             builder.Services.AddHttpClient();
@@ -47,9 +45,9 @@ namespace SFA.DAS.EmployerDemand.Jobs
                 );
             }
             
-            _configuration = config.Build();
+            var builtConfiguration = config.Build();
             builder.Services.AddOptions();
-            builder.Services.Configure<EmployerDemandJobsApiConfiguration>(_configuration.GetSection(nameof(EmployerDemandJobsApiConfiguration)));
+            builder.Services.Configure<EmployerDemandJobsApiConfiguration>(builtConfiguration.GetSection(nameof(EmployerDemandJobsApiConfiguration)));
             builder.Services.AddSingleton(cfg => cfg.GetService<IOptions<EmployerDemandJobsApiConfiguration>>().Value);
 
             builder.Services.AddSingleton(new FunctionEnvironment(configuration["EnvironmentName"]));
