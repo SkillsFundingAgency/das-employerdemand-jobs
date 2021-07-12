@@ -61,5 +61,18 @@ namespace SFA.DAS.EmployerDemand.Jobs.Application.Services
 
             await _apiClient.Post<PostSendEmailResponse>(request);
         }
+
+        public async Task<IEnumerable<Guid>> GetDemandsOlderThan3Years()
+        {
+            var result = await _apiClient.Get<GetDemandsOlderThan3YearsResponse>(new GetDemandsOlderThan3YearsRequest());
+
+            return result.EmployerDemandIds;
+        }
+
+        public async Task AnonymiseDemand(Guid courseDemandId)
+        {
+            var request = new PostAnonymiseDemandRequest(courseDemandId);
+            await _apiClient.Post<PostAnonymiseDemandResponse>(request);
+        }
     }
 }
